@@ -2,6 +2,7 @@ package com.cefet.ds_projeto_seila.entities;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tbAssinatura")
@@ -10,27 +11,30 @@ public class Assinatura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(nullable = false)
     private Date dataInicio;
+    @Column(nullable = false)
     private String situacao;
     private Date dataFim;
 
-    private Long idCliente;  
-    private Long idPlano;    
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private Cliente cliente;
+    @ManyToOne
+    @JoinColumn(name = "id_plano", nullable = false)
+    private Plano plano;
 
     public Assinatura() {
     }
 
-    public Assinatura(Long id, Date dataInicio, String situacao, Date dataFim, Long idCliente, Long idPlano) {
+    public Assinatura(Long id, Date dataInicio, String situacao, Date dataFim, Cliente cliente, Plano plano) {
         this.id = id;
         this.dataInicio = dataInicio;
         this.situacao = situacao;
         this.dataFim = dataFim;
-        this.idCliente = idCliente;
-        this.idPlano = idPlano;
+        this.cliente = cliente;
+        this.plano = plano;
     }
-
-    
 
     public Long getId() {
         return id;
@@ -64,19 +68,31 @@ public class Assinatura {
         this.dataFim = dataFim;
     }
 
-    public Long getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Long getIdPlano() {
-        return idPlano;
+    public Plano getPlano() {
+        return plano;
     }
 
-    public void setIdPlano(Long idPlano) {
-        this.idPlano = idPlano;
+    public void setPlano(Plano plano) {
+        this.plano = plano;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Assinatura that = (Assinatura) o;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getDataInicio(), that.getDataInicio()) && Objects.equals(getSituacao(), that.getSituacao()) && Objects.equals(getDataFim(), that.getDataFim()) && Objects.equals(getCliente(), that.getCliente()) && Objects.equals(getPlano(), that.getPlano());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getDataInicio(), getSituacao(), getDataFim(), getCliente(), getPlano());
     }
 }

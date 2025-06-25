@@ -2,6 +2,8 @@ package com.cefet.ds_projeto_seila.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "tbGenero")
 public class Genero {
@@ -10,6 +12,7 @@ public class Genero {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String descricao;
 
     
@@ -37,5 +40,17 @@ public class Genero {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Genero genero = (Genero) o;
+        return Objects.equals(getId(), genero.getId()) && Objects.equals(getDescricao(), genero.getDescricao());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getDescricao());
     }
 }

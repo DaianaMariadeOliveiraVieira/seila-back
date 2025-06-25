@@ -5,28 +5,27 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tbPerfil")
-public class Perfil {
+@Table(name = "tbFilmeGenero")
+public class FilmeGenero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
-    private Cliente cliente;
+    @JoinColumn(name = "id_filme", nullable = false)
+    private Filme filme;
 
     @ManyToOne
     @JoinColumn(name = "id_genero", nullable = false)
     private Genero genero;
 
-    public Perfil() {
+    public FilmeGenero() {
     }
 
-    public Perfil(Long id, Cliente cliente, Genero genero) {
+    public FilmeGenero(Long id, Filme filme, Genero genero) {
         this.id = id;
-        this.cliente = cliente;
+        this.filme = filme;
         this.genero = genero;
     }
 
@@ -38,12 +37,12 @@ public class Perfil {
         this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Filme getFilme() {
+        return filme;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setFilme(Filme filme) {
+        this.filme = filme;
     }
 
     public Genero getGenero() {
@@ -57,12 +56,12 @@ public class Perfil {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Perfil perfil = (Perfil) o;
-        return Objects.equals(getId(), perfil.getId()) && Objects.equals(getCliente(), perfil.getCliente()) && Objects.equals(getGenero(), perfil.getGenero());
+        FilmeGenero that = (FilmeGenero) o;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(filme, that.filme) && Objects.equals(genero, that.genero);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCliente(), getGenero());
+        return Objects.hash(getId(), filme, genero);
     }
 }

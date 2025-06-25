@@ -2,6 +2,8 @@ package com.cefet.ds_projeto_seila.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "tbCliente")
 public class Cliente {
@@ -10,10 +12,15 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String nome;
+    @Column(nullable = false)
     private String cpf;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String login;
+    @Column(nullable = false)
     private String senha;
 
     
@@ -77,6 +84,18 @@ public class Cliente {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(getId(), cliente.getId()) && Objects.equals(getNome(), cliente.getNome()) && Objects.equals(getCpf(), cliente.getCpf()) && Objects.equals(getEmail(), cliente.getEmail()) && Objects.equals(getLogin(), cliente.getLogin()) && Objects.equals(getSenha(), cliente.getSenha());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNome(), getCpf(), getEmail(), getLogin(), getSenha());
     }
 }
 

@@ -2,6 +2,7 @@ package com.cefet.ds_projeto_seila.entities;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tbAvaliacao")
@@ -12,22 +13,27 @@ public class Avaliacao {
     private Long id;
 
     private Date data;
+    @Column(nullable = false)
     private String comentario;
     private Double nota;
 
-    private Long idFilme;    
-    private Long idCliente;  
+    @ManyToOne
+    @JoinColumn(name = "id_filme")
+    private Filme filme;
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
 
     public Avaliacao() {
     }
 
-    public Avaliacao(Long id, Date data, String comentario, Double nota, Long idFilme, Long idCliente) {
+    public Avaliacao(Long id, Date data, String comentario, Double nota, Filme filme, Cliente cliente) {
         this.id = id;
         this.data = data;
         this.comentario = comentario;
         this.nota = nota;
-        this.idFilme = idFilme;
-        this.idCliente = idCliente;
+        this.filme = filme;
+        this.cliente = cliente;
     }
 
     // Getters e Setters
@@ -64,19 +70,31 @@ public class Avaliacao {
         this.nota = nota;
     }
 
-    public Long getIdFilme() {
-        return idFilme;
+    public Filme getFilme() {
+        return filme;
     }
 
-    public void setIdFilme(Long idFilme) {
-        this.idFilme = idFilme;
+    public void setFilme(Filme filme) {
+        this.filme = filme;
     }
 
-    public Long getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Avaliacao avaliacao = (Avaliacao) o;
+        return Objects.equals(getId(), avaliacao.getId()) && Objects.equals(getData(), avaliacao.getData()) && Objects.equals(getComentario(), avaliacao.getComentario()) && Objects.equals(getNota(), avaliacao.getNota()) && Objects.equals(getFilme(), avaliacao.getFilme()) && Objects.equals(getCliente(), avaliacao.getCliente());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getData(), getComentario(), getNota(), getFilme(), getCliente());
     }
 }

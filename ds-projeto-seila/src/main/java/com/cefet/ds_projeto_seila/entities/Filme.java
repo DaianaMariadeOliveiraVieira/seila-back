@@ -2,6 +2,8 @@ package com.cefet.ds_projeto_seila.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "tbFilme")
 public class Filme {
@@ -10,6 +12,7 @@ public class Filme {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String nome;
     private String sinopse;
     private String tags;
@@ -76,5 +79,17 @@ public class Filme {
 
     public void setUrlImagem(String urlImagem) {
         this.urlImagem = urlImagem;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Filme filme = (Filme) o;
+        return Objects.equals(getId(), filme.getId()) && Objects.equals(getNome(), filme.getNome()) && Objects.equals(getSinopse(), filme.getSinopse()) && Objects.equals(getTags(), filme.getTags()) && Objects.equals(getUrlVideo(), filme.getUrlVideo()) && Objects.equals(getUrlImagem(), filme.getUrlImagem());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNome(), getSinopse(), getTags(), getUrlVideo(), getUrlImagem());
     }
 }
