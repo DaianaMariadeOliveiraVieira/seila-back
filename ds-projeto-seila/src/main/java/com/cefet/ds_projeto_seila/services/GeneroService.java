@@ -1,11 +1,8 @@
 package com.cefet.ds_projeto_seila.services;
 
 import com.cefet.ds_projeto_seila.dto.GeneroDTO;
-import com.cefet.ds_projeto_seila.dto.PlanoDTO;
 import com.cefet.ds_projeto_seila.entities.Genero;
-import com.cefet.ds_projeto_seila.entities.Plano;
 import com.cefet.ds_projeto_seila.repositories.GeneroRepo;
-import com.cefet.ds_projeto_seila.repositories.PlanoRepo;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,4 +32,20 @@ public class GeneroService {
         return new GeneroDTO(saved);
     }
 
+    public GeneroDTO update(Long id, GeneroDTO dto) {
+        Genero genero = generoRepo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Gênero não encontrado com ID: " + id));
+
+        genero.setDescricao(dto.getDescricao());
+
+        Genero updated = generoRepo.save(genero);
+        return new GeneroDTO(updated);
+    }
+
+    public void delete(Long id) {
+        if (!generoRepo.existsById(id)) {
+            throw new EntityNotFoundException("Gênero não encontrado com ID: " + id);
+        }
+        generoRepo.deleteById(id);
+    }
 }
