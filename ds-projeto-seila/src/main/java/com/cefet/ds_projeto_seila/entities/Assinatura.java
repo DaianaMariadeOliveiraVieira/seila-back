@@ -14,7 +14,7 @@ public class Assinatura {
     @Column(nullable = false)
     private Date dataInicio;
     @Column(nullable = false)
-    private String situacao;
+    private boolean ativa;
     private Date dataFim;
 
     @ManyToOne
@@ -27,10 +27,10 @@ public class Assinatura {
     public Assinatura() {
     }
 
-    public Assinatura(Long id, Date dataInicio, String situacao, Date dataFim, Cliente cliente, Plano plano) {
+    public Assinatura(Long id, Date dataInicio, boolean ativa, Date dataFim, Cliente cliente, Plano plano) {
         this.id = id;
         this.dataInicio = dataInicio;
-        this.situacao = situacao;
+        this.ativa = ativa;
         this.dataFim = dataFim;
         this.cliente = cliente;
         this.plano = plano;
@@ -52,12 +52,12 @@ public class Assinatura {
         this.dataInicio = dataInicio;
     }
 
-    public String getSituacao() {
-        return situacao;
+    public boolean isAtiva() {
+        return ativa;
     }
 
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
+    public void setAtiva(boolean ativa) {
+        this.ativa = ativa;
     }
 
     public Date getDataFim() {
@@ -88,11 +88,11 @@ public class Assinatura {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Assinatura that = (Assinatura) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getDataInicio(), that.getDataInicio()) && Objects.equals(getSituacao(), that.getSituacao()) && Objects.equals(getDataFim(), that.getDataFim()) && Objects.equals(getCliente(), that.getCliente()) && Objects.equals(getPlano(), that.getPlano());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getDataInicio(), that.getDataInicio()) && Objects.equals(isAtiva(), that.isAtiva()) && Objects.equals(getDataFim(), that.getDataFim()) && Objects.equals(getCliente(), that.getCliente()) && Objects.equals(getPlano(), that.getPlano());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getDataInicio(), getSituacao(), getDataFim(), getCliente(), getPlano());
+        return Objects.hash(getId(), getDataInicio(), isAtiva(), getDataFim(), getCliente(), getPlano());
     }
 }
