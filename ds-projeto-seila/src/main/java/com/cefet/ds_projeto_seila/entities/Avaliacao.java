@@ -13,8 +13,8 @@ public class Avaliacao {
     private Long id;
 
     private Date data;
-    @Column(nullable = false)
     private String comentario;
+    @Column(nullable = false)
     private Double nota;
 
     @ManyToOne
