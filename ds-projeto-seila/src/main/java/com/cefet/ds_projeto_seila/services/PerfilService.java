@@ -42,7 +42,7 @@ public class PerfilService {
         Genero genero = generoRepo.findById(dto.getIdGenero())
                 .orElseThrow(() -> new EntityNotFoundException("Gênero não encontrado com ID: " + dto.getIdGenero()));
 
-        Perfil perfil = new Perfil(null, cliente, genero);
+        Perfil perfil = new Perfil(null, cliente, genero, dto.isGostaDoGenero());
         Perfil saved = perfilRepo.save(perfil);
         return new PerfilDTO(saved);
     }
@@ -65,6 +65,7 @@ public class PerfilService {
 
         perfil.setCliente(cliente);
         perfil.setGenero(genero);
+        perfil.setGostaDoGenero(dto.isGostaDoGenero());
 
         Perfil atualizado = perfilRepo.save(perfil);
         return new PerfilDTO(atualizado);

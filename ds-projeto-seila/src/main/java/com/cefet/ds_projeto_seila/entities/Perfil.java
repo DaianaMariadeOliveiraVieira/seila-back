@@ -12,7 +12,7 @@ public class Perfil {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    private boolean gostaDoGenero;
     @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
@@ -24,10 +24,11 @@ public class Perfil {
     public Perfil() {
     }
 
-    public Perfil(Long id, Cliente cliente, Genero genero) {
+    public Perfil(Long id, Cliente cliente, Genero genero, boolean gostaDoGenero) {
         this.id = id;
         this.cliente = cliente;
         this.genero = genero;
+        this.gostaDoGenero = gostaDoGenero;
     }
 
     public Long getId() {
@@ -52,6 +53,14 @@ public class Perfil {
 
     public void setGenero(Genero genero) {
         this.genero = genero;
+    }
+
+    public boolean isGostaDoGenero() {
+        return gostaDoGenero;
+    }
+
+    public void setGostaDoGenero(boolean gostaDoGenero) {
+        this.gostaDoGenero = gostaDoGenero;
     }
 
     @Override
