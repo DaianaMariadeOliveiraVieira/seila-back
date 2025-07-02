@@ -60,6 +60,9 @@ public class AvaliacaoService {
         Cliente cliente = clienteRepo.findById(dto.getIdCliente())
                 .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado com ID: " + dto.getIdCliente()));
 
+        if (dto.getNota() < 0 || dto.getNota() > 10) {
+            throw new IllegalArgumentException("Nota deve ser entre 0 e 10");
+        }
         avaliacao.setData(dto.getData());
         avaliacao.setComentario(dto.getComentario());
         avaliacao.setNota(dto.getNota());
