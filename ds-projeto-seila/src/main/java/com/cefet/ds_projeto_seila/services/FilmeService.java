@@ -27,6 +27,10 @@ public class FilmeService {
     }
 
     public FilmeDTO insert(FilmeDTO filmeDTO) {
+        if (filmeDTO.getNome() == null || filmeDTO.getNome().isEmpty()) {
+            throw new IllegalArgumentException("O filme precisa ter nome.");
+        }
+
         Filme filme = new Filme(filmeDTO.getId(), filmeDTO.getNome(), filmeDTO.getSinopse(), filmeDTO.getTags(), filmeDTO.getUrlVideo(), filmeDTO.getUrlImagem());
         Filme saved = filmeRepo.save(filme);
         return new FilmeDTO(saved);
@@ -35,6 +39,10 @@ public class FilmeService {
     public FilmeDTO update(Long id, FilmeDTO dto) {
         Filme filme = filmeRepo.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Filme não encontrado com ID: " + id));
+
+        if (dto.getNome() == null || dto.getNome().isEmpty()) {
+            throw new IllegalArgumentException("O filme precisa ter nome.");
+        }
 
         filme.setNome(dto.getNome());
         filme.setSinopse(dto.getSinopse());
