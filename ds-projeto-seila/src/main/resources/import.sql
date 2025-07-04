@@ -1,0 +1,1 @@
+insert into tb_cliente(nome, cpf, email, login, senha) values ('João da Silva', '12345678901', 'joao.silva@email.com', 'joaodasilva', 'senha123')

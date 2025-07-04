@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tbFilmeGenero")
+@Table(name = "tb_filme_genero")
 public class FilmeGenero {
 
     @Id

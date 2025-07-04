@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tbAssinatura")
+@Table(name = "tb_assinatura")
 public class Assinatura {
 
     @Id
