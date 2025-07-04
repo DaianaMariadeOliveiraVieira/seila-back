@@ -11,6 +11,8 @@ public class AssinaturaDTO {
     private Date dataInicio;
     private Date dataFim;
     private boolean ativa;
+    private Long idCliente;
+    private Long idPlano;
 
     public AssinaturaDTO() {
     }
@@ -20,6 +22,8 @@ public class AssinaturaDTO {
         this.dataInicio = assinatura.getDataInicio();
         this.dataFim = assinatura.getDataFim();
         this.ativa = assinatura.isAtiva();
+        this.idCliente = assinatura.getCliente().getId();
+        this.idPlano = assinatura.getPlano().getId();
     }
 
     public Long getId() {
@@ -52,6 +56,22 @@ public class AssinaturaDTO {
 
     public void setAtiva(boolean ativa) {
         this.ativa = ativa;
+    }
+    
+    public Long getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Long getIdPlano() {
+        return idPlano;
+    }
+
+    public void setIdPlano(Long idPlano) {
+        this.idPlano = idPlano;
     }
 
     @Override

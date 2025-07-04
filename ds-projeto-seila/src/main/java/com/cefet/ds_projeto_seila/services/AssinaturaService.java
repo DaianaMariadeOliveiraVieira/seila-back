@@ -36,11 +36,11 @@ public class AssinaturaService {
         return new AssinaturaDTO(assinatura);
     }
 
-    public AssinaturaDTO insert(AssinaturaDTO dto, Long idCliente, Long idPlano) {
-        Cliente cliente = clienteRepo.findById(idCliente)
-            .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado com ID: " + idCliente));
-        Plano plano = planoRepo.findById(idPlano)
-            .orElseThrow(() -> new EntityNotFoundException("Plano não encontrado com ID: " + idPlano));
+    public AssinaturaDTO insert(AssinaturaDTO dto) {
+        Cliente cliente = clienteRepo.findById(dto.getIdCliente())
+            .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado com ID: " + dto.getIdCliente()));
+        Plano plano = planoRepo.findById(dto.getIdPlano())
+            .orElseThrow(() -> new EntityNotFoundException("Plano não encontrado com ID: " + dto.getIdPlano()));
 
         Assinatura nova = new Assinatura(
             null,
