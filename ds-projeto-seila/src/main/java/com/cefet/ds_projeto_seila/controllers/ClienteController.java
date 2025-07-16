@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cefet.ds_projeto_seila.dto.AssinaturaDTO;
 import com.cefet.ds_projeto_seila.dto.ClienteDTO;
 import com.cefet.ds_projeto_seila.services.AssinaturaService;
 import com.cefet.ds_projeto_seila.services.ClienteService;
+
 
 @RestController
 @RequestMapping("/clientes")
@@ -36,7 +38,6 @@ public class ClienteController {
         List<ClienteDTO> clientes = clienteService.findAll();
         return ResponseEntity.ok(clientes);
     }
-
     @PostMapping
     public ResponseEntity<ClienteDTO> create(@RequestBody ClienteDTO clienteDTO) {
         ClienteDTO novoCliente = clienteService.insert(clienteDTO);
@@ -53,5 +54,11 @@ public class ClienteController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         clienteService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+     @GetMapping("/existe")
+    public ResponseEntity<Boolean> existsByLogin(@RequestParam String login) {
+        boolean existe = clienteService.existsByLogin(login);
+        return ResponseEntity.ok(existe);
     }
 }

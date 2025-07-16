@@ -36,7 +36,7 @@ public class Avaliacao {
         this.cliente = cliente;
     }
 
-    // Getters e Setters
+
 
     public Long getId() {
         return id;

@@ -1,6 +1,8 @@
 package com.cefet.ds_projeto_seila.dto;
 
 import com.cefet.ds_projeto_seila.entities.Cliente;
+import com.cefet.ds_projeto_seila.entities.NivelAcesso;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ClienteDTO {
 
@@ -8,8 +10,12 @@ public class ClienteDTO {
     private String nome;
     private String cpf;
     private String email;
+
     private String login;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
+    private NivelAcesso nivelAcesso;
 
     public ClienteDTO() {
     }
@@ -21,6 +27,7 @@ public class ClienteDTO {
         this.email = cliente.getEmail();
         this.login = cliente.getLogin();
         this.senha = cliente.getSenha();
+        this.nivelAcesso = cliente.getNivelAcesso();
     }
 
     public Long getId() {
@@ -45,5 +52,9 @@ public class ClienteDTO {
 
     public String getSenha() {
         return senha;
+    }
+
+    public NivelAcesso getNivelAcesso() {
+        return nivelAcesso;
     }
 }

@@ -1,1 +1,1 @@
-insert into tb_cliente(nome, cpf, email, login, senha) values ('João da Silva', '12345678901', 'joao.silva@email.com', 'joaodasilva', 'senha123')
+INSERT INTO tb_cliente(nome, cpf, email, login, senha, nivel_acesso) VALUES ('João da Silva', '12345678901', 'joao.silva@email.com', 'joaodasilva', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'CLIENTE');

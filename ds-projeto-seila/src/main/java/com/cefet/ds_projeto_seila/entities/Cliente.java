@@ -14,30 +14,38 @@ public class Cliente {
 
     @Column(nullable = false)
     private String nome;
-    @Column(nullable = false)
+
+    @Column(nullable = false, unique = true)
     private String cpf;
-    @Column(nullable = false)
+
+    @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
+
+    @Column(unique = true, nullable = false)
     private String login;
+
     @Column(nullable = false)
     private String senha;
 
-    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "nivel_acesso", nullable = false)
+    private NivelAcesso nivelAcesso;
+
     public Cliente() {
     }
 
-    
-    public Cliente(Long id, String nome, String cpf, String email, String login, String senha) {
+    public Cliente(Long id, String nome, String cpf, String email, String login, String senha,
+            NivelAcesso nivelAcesso) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.login = login;
         this.senha = senha;
+        this.nivelAcesso = nivelAcesso;
     }
 
-    
+    // Getters e setters
     public Long getId() {
         return id;
     }
@@ -86,16 +94,26 @@ public class Cliente {
         this.senha = senha;
     }
 
+    public NivelAcesso getNivelAcesso() {
+        return nivelAcesso;
+    }
+
+    public void setNivelAcesso(NivelAcesso nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Cliente))
+            return false;
         Cliente cliente = (Cliente) o;
-        return Objects.equals(getId(), cliente.getId()) && Objects.equals(getNome(), cliente.getNome()) && Objects.equals(getCpf(), cliente.getCpf()) && Objects.equals(getEmail(), cliente.getEmail()) && Objects.equals(getLogin(), cliente.getLogin()) && Objects.equals(getSenha(), cliente.getSenha());
+        return Objects.equals(id, cliente.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNome(), getCpf(), getEmail(), getLogin(), getSenha());
+        return Objects.hash(id);
     }
 }
-
