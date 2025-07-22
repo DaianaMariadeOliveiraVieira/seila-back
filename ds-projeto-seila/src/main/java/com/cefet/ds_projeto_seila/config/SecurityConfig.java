@@ -49,11 +49,32 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/filmes").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/filmes/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/filmes/**").hasRole("ADMIN")
+                //Filmes por gênero
+                .requestMatchers(HttpMethod.GET, "/filmes/genero/**").hasAnyRole("ADMIN", "CLIENTE")
+                 .requestMatchers(HttpMethod.POST, "/filmes/genero").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/filmes/genero/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/filmes/genero/**").hasRole("ADMIN")
+                //Historico
+                .requestMatchers(HttpMethod.GET, "/historico/**").hasAnyRole("ADMIN", "CLIENTE")
+                .requestMatchers(HttpMethod.POST, "/historico").hasRole("CLIENTE")
+                .requestMatchers(HttpMethod.PUT, "/historico/**").hasRole("CLIENTE")
+                .requestMatchers(HttpMethod.DELETE, "/historico/**").hasRole("ADMIN")
+                //Perfil
+                .requestMatchers(HttpMethod.GET, "/perfil/**").hasAnyRole("ADMIN", "CLIENTE")
+                .requestMatchers(HttpMethod.POST, "/perfil").hasRole("CLIENTE")
+                .requestMatchers(HttpMethod.PUT, "/perfil/**").hasRole("CLIENTE")
+                .requestMatchers(HttpMethod.DELETE, "/perfil/**").hasRole("ADMIN")
+                
                 // Avaliações
                 .requestMatchers(HttpMethod.GET, "/avaliacoes/**").hasAnyRole("ADMIN", "CLIENTE")
                 .requestMatchers(HttpMethod.POST, "/avaliacoes").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.PUT, "/avaliacoes/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/avaliacoes/**").hasRole("ADMIN")
+                //Genero
+                .requestMatchers(HttpMethod.GET, "/generos/**").hasAnyRole("ADMIN", "CLIENTE")
+                .requestMatchers(HttpMethod.POST, "/generos").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/generos/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/generos/**").hasRole("ADMIN")
                 // Assinaturas
                 .requestMatchers(HttpMethod.GET, "/assinaturas/**").hasAnyRole("ADMIN", "CLIENTE")
                 .requestMatchers(HttpMethod.POST, "/assinaturas").hasRole("CLIENTE")
