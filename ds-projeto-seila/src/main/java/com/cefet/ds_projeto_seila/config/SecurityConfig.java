@@ -39,13 +39,17 @@ public class SecurityConfig {
                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                 .requestMatchers(HttpMethod.POST, "/clientes").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
+
+
+                    .requestMatchers(HttpMethod.POST, "/generos").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/generos").permitAll()
                 // Clientes
-                .requestMatchers(HttpMethod.GET, "/clientes/**").hasAnyRole("ADMIN", "CLIENTE")
+                .requestMatchers(HttpMethod.GET, "/clientes/**").permitAll()
                 //.requestMatchers(HttpMethod.POST, "/clientes").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/clientes/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/clientes/**").hasRole("ADMIN")
                 // Filmes
-                .requestMatchers(HttpMethod.GET, "/filmes/**").hasAnyRole("ADMIN", "CLIENTE")
+                .requestMatchers(HttpMethod.GET, "/filmes/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/filmes").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/filmes/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/filmes/**").hasRole("ADMIN")
@@ -60,13 +64,13 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.PUT, "/historico/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/historico/**").hasRole("ADMIN")
                 //Perfil
-                .requestMatchers(HttpMethod.GET, "/perfil/**").hasAnyRole("ADMIN", "CLIENTE")
+                .requestMatchers(HttpMethod.GET, "/perfil/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/perfil").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.PUT, "/perfil/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/perfil/**").hasRole("ADMIN")
                 
                 // Avaliações
-                .requestMatchers(HttpMethod.GET, "/avaliacoes/**").hasAnyRole("ADMIN", "CLIENTE")
+                .requestMatchers(HttpMethod.GET, "/avaliacoes/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/avaliacoes").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.PUT, "/avaliacoes/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/avaliacoes/**").hasRole("ADMIN")
@@ -81,7 +85,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.PUT, "/assinaturas/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/assinaturas/**").hasRole("ADMIN")
                 // Planos (geralmente só ADMIN mexe)
-                .requestMatchers(HttpMethod.GET, "/planos/**").hasAnyRole("ADMIN", "CLIENTE")
+                .requestMatchers(HttpMethod.GET, "/planos/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/planos").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/planos/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/planos/**").hasRole("ADMIN")
