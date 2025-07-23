@@ -1,7 +1,10 @@
 package com.cefet.ds_projeto_seila.services;
 
+import com.cefet.ds_projeto_seila.dto.FilmeDTO;
 import com.cefet.ds_projeto_seila.dto.GeneroDTO;
+import com.cefet.ds_projeto_seila.entities.Filme;
 import com.cefet.ds_projeto_seila.entities.Genero;
+import com.cefet.ds_projeto_seila.repositories.FilmeGeneroRepo;
 import com.cefet.ds_projeto_seila.repositories.GeneroRepo;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,9 @@ public class GeneroService {
     @Autowired
     private GeneroRepo generoRepo;
 
+    @Autowired
+    private FilmeGeneroRepo filmeGeneroRepo;
+
     public List<GeneroDTO> findAll() {
         List<Genero> generos = generoRepo.findAll();
         return generos.stream().map(GeneroDTO::new).toList();
@@ -24,6 +30,11 @@ public class GeneroService {
         Genero genero = generoRepo.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Gênero não encontrado com ID: " + id));
         return new GeneroDTO(genero);
+    }
+
+    public List<FilmeDTO> findFilmesByGeneroId(Long id) {
+        List<Filme> filmes = filmeGeneroRepo.findAllByGeneroId(id);
+        return filmes.stream().map(FilmeDTO::new).toList();
     }
 
     public GeneroDTO insert(GeneroDTO generoDTO) {
