@@ -1,8 +1,10 @@
 package com.cefet.ds_projeto_seila.services;
 
 import com.cefet.ds_projeto_seila.dto.FilmeDTO;
+import com.cefet.ds_projeto_seila.dto.FilmeGeneroDTO;
 import com.cefet.ds_projeto_seila.dto.GeneroDTO;
 import com.cefet.ds_projeto_seila.entities.Filme;
+import com.cefet.ds_projeto_seila.entities.FilmeGenero;
 import com.cefet.ds_projeto_seila.entities.Genero;
 import com.cefet.ds_projeto_seila.repositories.FilmeGeneroRepo;
 import com.cefet.ds_projeto_seila.repositories.GeneroRepo;
@@ -32,9 +34,9 @@ public class GeneroService {
         return new GeneroDTO(genero);
     }
 
-    public List<FilmeDTO> findFilmesByGeneroId(Long id) {
-        List<Filme> filmes = filmeGeneroRepo.findAllByGeneroId(id);
-        return filmes.stream().map(FilmeDTO::new).toList();
+    public List<FilmeGeneroDTO> findFilmesByGeneroId(Long id) {
+        List<FilmeGenero> filmes = filmeGeneroRepo.findAllByGeneroId(id);
+        return filmes.stream().map(FilmeGeneroDTO::new).toList();
     }
 
     public GeneroDTO insert(GeneroDTO generoDTO) {

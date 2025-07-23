@@ -40,9 +40,6 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/clientes").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
 
-
-                    .requestMatchers(HttpMethod.POST, "/generos").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/generos").permitAll()
                 // Clientes
                 .requestMatchers(HttpMethod.GET, "/clientes/**").permitAll()
                 //.requestMatchers(HttpMethod.POST, "/clientes").hasRole("ADMIN")
@@ -75,7 +72,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.PUT, "/avaliacoes/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/avaliacoes/**").hasRole("ADMIN")
                 //Genero
-                .requestMatchers(HttpMethod.GET, "/generos/**").hasAnyRole("ADMIN", "CLIENTE")
+                .requestMatchers(HttpMethod.GET, "/generos/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/generos").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/generos/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/generos/**").hasRole("ADMIN")

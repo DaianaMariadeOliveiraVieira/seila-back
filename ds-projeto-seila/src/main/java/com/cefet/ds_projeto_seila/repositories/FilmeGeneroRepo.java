@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface FilmeGeneroRepo extends JpaRepository<FilmeGenero, Long> {
-    List<Filme> findAllByGeneroId(Long generoId);
+    List<FilmeGenero> findAllByGeneroId(Long generoId);
 }
