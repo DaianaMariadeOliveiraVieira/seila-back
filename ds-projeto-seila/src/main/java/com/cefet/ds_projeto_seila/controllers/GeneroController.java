@@ -41,8 +41,8 @@ public class GeneroController {
     }
 
     @GetMapping("/{id}/filmes") // lista todos os filmes daquele genero
-    public ResponseEntity<List<FilmeGeneroDTO>> findFilmesByGeneroId(@PathVariable Long id) {
-        List<FilmeGeneroDTO> filmes = generoService.findFilmesByGeneroId(id);
+    public ResponseEntity<List<FilmeDTO>> findFilmesByGeneroId(@PathVariable Long id) {
+        List<FilmeDTO> filmes = generoService.findFilmesByGeneroId(id);
         return ResponseEntity.ok(filmes);
     }
 

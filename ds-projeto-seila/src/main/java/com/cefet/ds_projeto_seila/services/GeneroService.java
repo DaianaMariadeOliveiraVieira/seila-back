@@ -34,9 +34,12 @@ public class GeneroService {
         return new GeneroDTO(genero);
     }
 
-    public List<FilmeGeneroDTO> findFilmesByGeneroId(Long id) {
-        List<FilmeGenero> filmes = filmeGeneroRepo.findAllByGeneroId(id);
-        return filmes.stream().map(FilmeGeneroDTO::new).toList();
+    public List<FilmeDTO> findFilmesByGeneroId(Long id) {
+        List<FilmeGenero> filmesGeneros = filmeGeneroRepo.findAllByGeneroId(id);
+        return filmesGeneros.stream()
+                .map(FilmeGenero::getFilme) // Mapeia FilmeGenero para Filme
+                .map(FilmeDTO::new)
+                .toList();
     }
 
     public GeneroDTO insert(GeneroDTO generoDTO) {
