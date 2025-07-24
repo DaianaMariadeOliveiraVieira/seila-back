@@ -43,7 +43,7 @@ public class SecurityConfig {
                 // Clientes
                 .requestMatchers(HttpMethod.GET, "/clientes/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/clientes").permitAll()
-                .requestMatchers(HttpMethod.PUT, "/clientes/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/clientes/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/clientes/**").hasRole("ADMIN")
                 // Filmes
                 .requestMatchers(HttpMethod.GET, "/filmes/**").permitAll()
