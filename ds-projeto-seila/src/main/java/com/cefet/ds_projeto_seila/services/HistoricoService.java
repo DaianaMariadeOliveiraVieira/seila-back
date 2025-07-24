@@ -36,6 +36,11 @@ public class HistoricoService {
         return new HistoricoDTO(historico);
     }
 
+    public List<HistoricoDTO> findByClienteId(Long clienteId) {
+        List<Historico> historicos = historicoRepo.findByClienteId(clienteId);
+        return historicos.stream().map(HistoricoDTO::new).toList();
+    }
+
     public HistoricoDTO insert(HistoricoDTO dto) {
         Filme filme = filmeRepo.findById(dto.getIdFilme())
                 .orElseThrow(() -> new EntityNotFoundException("Filme não encontrado com ID: " + dto.getIdFilme()));

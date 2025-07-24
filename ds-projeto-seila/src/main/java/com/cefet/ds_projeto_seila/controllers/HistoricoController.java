@@ -37,6 +37,12 @@ public class HistoricoController {
         return ResponseEntity.ok(historicos);
     }
 
+    @GetMapping("/cliente/{clienteId}") // endpoint para buscar histórico de um cliente específico
+    public ResponseEntity<List<HistoricoDTO>> buscarPorIdDoCliente(@PathVariable Long clienteId) {
+        List<HistoricoDTO> historicos = historicoService.findByClienteId(clienteId);
+        return ResponseEntity.ok(historicos);
+    }
+
     @PostMapping
     public ResponseEntity<HistoricoDTO> create(@RequestBody HistoricoDTO historicoDTO) {
         HistoricoDTO novoHistorico = historicoService.insert(historicoDTO);

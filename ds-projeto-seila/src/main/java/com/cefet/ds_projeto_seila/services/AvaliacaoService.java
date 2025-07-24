@@ -1,6 +1,8 @@
 package com.cefet.ds_projeto_seila.services;
 
+import com.cefet.ds_projeto_seila.dto.AssinaturaDTO;
 import com.cefet.ds_projeto_seila.dto.AvaliacaoDTO;
+import com.cefet.ds_projeto_seila.entities.Assinatura;
 import com.cefet.ds_projeto_seila.entities.Avaliacao;
 import com.cefet.ds_projeto_seila.entities.Cliente;
 import com.cefet.ds_projeto_seila.entities.Filme;
@@ -36,6 +38,10 @@ public class AvaliacaoService {
         return new AvaliacaoDTO(avaliacao);
     }
 
+    public List<AvaliacaoDTO> findByClienteId(Long clienteId) {
+        List<Avaliacao> list = avaliacaoRepo.findByClienteId(clienteId);
+        return list.stream().map(AvaliacaoDTO::new).toList();
+    }
     public AvaliacaoDTO insert(AvaliacaoDTO dto) {
         Filme filme = filmeRepo.findById(dto.getIdFilme())
                 .orElseThrow(() -> new EntityNotFoundException("Filme não encontrado com ID: " + dto.getIdFilme()));

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssinaturaService {
@@ -34,6 +35,11 @@ public class AssinaturaService {
         Assinatura assinatura = assinaturaRepo.findById(id)
             .orElseThrow(() -> new EntityNotFoundException("Assinatura não encontrada com ID: " + id));
         return new AssinaturaDTO(assinatura);
+    }
+
+    public List<AssinaturaDTO> findByClienteId(Long clienteId) {
+        List<Assinatura> list = assinaturaRepo.findByClienteId(clienteId);
+        return list.stream().map(AssinaturaDTO::new).toList();
     }
 
     public AssinaturaDTO insert(AssinaturaDTO dto) {

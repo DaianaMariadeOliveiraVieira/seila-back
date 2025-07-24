@@ -2,6 +2,7 @@ package com.cefet.ds_projeto_seila.controllers;
 
 import java.util.List;
 
+import com.cefet.ds_projeto_seila.entities.Assinatura;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,6 +33,12 @@ public class AssinaturaController {
     @GetMapping
     public ResponseEntity<List<AssinaturaDTO>> findAll() {
         List<AssinaturaDTO> assinaturas = assinaturaService.findAll();
+        return ResponseEntity.ok(assinaturas);
+    }
+
+    @GetMapping("/cliente/{clienteId}") // endpoint para buscar assinaturas de um cliente específico
+    public ResponseEntity<List<AssinaturaDTO>> buscarPorIdDoCliente(@PathVariable Long clienteId) {
+        List<AssinaturaDTO> assinaturas = assinaturaService.findByClienteId(clienteId);
         return ResponseEntity.ok(assinaturas);
     }
 

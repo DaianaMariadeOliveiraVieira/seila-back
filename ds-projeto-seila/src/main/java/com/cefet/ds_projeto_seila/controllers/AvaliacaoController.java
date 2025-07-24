@@ -2,6 +2,7 @@ package com.cefet.ds_projeto_seila.controllers;
 
 import java.util.List;
 
+import com.cefet.ds_projeto_seila.dto.AssinaturaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,6 +33,12 @@ public class AvaliacaoController {
     @GetMapping
     public ResponseEntity<List<AvaliacaoDTO>> findAll() {
         List<AvaliacaoDTO> avaliacoes = avaliacaoService.findAll();
+        return ResponseEntity.ok(avaliacoes);
+    }
+
+    @GetMapping("/cliente/{clienteId}") // endpoint para buscar avaliações de um cliente específico
+    public ResponseEntity<List<AvaliacaoDTO>> buscarPorIdDoCliente(@PathVariable Long clienteId) {
+        List<AvaliacaoDTO> avaliacoes = avaliacaoService.findByClienteId(clienteId);
         return ResponseEntity.ok(avaliacoes);
     }
 
