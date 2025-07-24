@@ -8,12 +8,17 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.cefet.ds_projeto_seila.entities.Cliente;
- 
+
 public class ClienteDetails implements UserDetails {
     private final Cliente cliente;
 
     public ClienteDetails(Cliente cliente){
         this.cliente = cliente;
+    }
+
+    // ✅ Adicionado para permitir uso do ID no JWT
+    public Long getId() {
+        return cliente.getId();
     }
 
     @Override
@@ -32,7 +37,7 @@ public class ClienteDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked(){ return true; }
- 
+
     @Override
     public boolean isCredentialsNonExpired(){ return true; }
 

@@ -23,20 +23,24 @@ this.key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
 this.jwtExpirationInMs = jwtExpirationInMs;
 }
 public String generateToken(Authentication authentication) {
-ClienteDetails userPrincipal = (ClienteDetails) authentication.getPrincipal();
-String roles = userPrincipal.getAuthorities().stream()
-.map(GrantedAuthority::getAuthority)
-.collect(Collectors.joining(","));
-Date now = new Date();
-Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
-return Jwts.builder()
-.setSubject(userPrincipal.getUsername())
-.claim("roles", roles)
-.setIssuedAt(now)
-.setExpiration(expiryDate)
-.signWith(this.key, SignatureAlgorithm.HS512)
-.compact();
+    ClienteDetails userPrincipal = (ClienteDetails) authentication.getPrincipal();
+    String roles = userPrincipal.getAuthorities().stream()
+        .map(GrantedAuthority::getAuthority)
+        .collect(Collectors.joining(","));
+    
+    Date now = new Date();
+    Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
+
+    return Jwts.builder()
+        .setSubject(userPrincipal.getUsername())
+        .claim("id", userPrincipal.getId()) // ✅ Adicionando o ID como claim
+        .claim("roles", roles)
+        .setIssuedAt(now)
+        .setExpiration(expiryDate)
+        .signWith(this.key, SignatureAlgorithm.HS512)
+        .compact();
 }
+
 public String getUsernameFromJWT(String token) {
 Claims claims = Jwts.parserBuilder()
 .setSigningKey(this.key)
