@@ -63,14 +63,21 @@ public class AssinaturaService {
     }
 
     public AssinaturaDTO update(Long id, AssinaturaDTO dto) {
-        Assinatura assinatura = assinaturaRepo.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("Assinatura não encontrada com ID: " + id));
+    Assinatura assinatura = assinaturaRepo.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Assinatura não encontrada com ID: " + id));
 
-        assinatura.setDataInicio(dto.getDataInicio());
-        assinatura.setDataFim(dto.getDataFim());
-        assinatura.setAtiva(dto.isAtiva());
+    assinatura.setDataInicio(dto.getDataInicio());
+    assinatura.setDataFim(dto.getDataFim());
+    assinatura.setAtiva(dto.isAtiva());
 
-        Assinatura atualizada = assinaturaRepo.save(assinatura);
-        return new AssinaturaDTO(atualizada);
-    }
+    // Buscar o novo plano pelo ID e setar na assinatura
+    Plano novoPlano = planoRepo.findById(dto.getIdPlano())
+        .orElseThrow(() -> new EntityNotFoundException("Plano não encontrado com ID: " + dto.getIdPlano()));
+
+    assinatura.setPlano(novoPlano);
+
+    Assinatura atualizada = assinaturaRepo.save(assinatura);
+    return new AssinaturaDTO(atualizada);
+}
+
 }

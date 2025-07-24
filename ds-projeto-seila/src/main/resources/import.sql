@@ -13,7 +13,7 @@ INSERT INTO tb_plano (id, descricao, valor) VALUES (2, 'Premium', 3049.90);
 
 INSERT INTO tb_cliente(nome, cpf, email, login, senha, nivel_acesso) VALUES ('João Silva', '12345678901', 'joao.silva@email.com', 'joaodasilva', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'CLIENTE');
 INSERT INTO tb_cliente(nome, cpf, email, login, senha, nivel_acesso) VALUES ('Gabriel Oliveira', '10771656686', 'gabriel410oliveira@gmail.com', 'gabrieloliveira', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'CLIENTE');
-INSERT INTO tb_cliente(nome, cpf, email, login, senha, nivel_acesso) VALUES ('Daiana Maria', '14330293678', 'daiana_vieira99@hotmail.com', 'daianamaria', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'CLIENTE');
+INSERT INTO tb_cliente(nome, cpf, email, login, senha, nivel_acesso) VALUES ('Daiana Maria', '14330293678', 'daiana_vieira99@hotmail.com', 'daianamaria', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'ADMIN');
 
 -- Filmes (com IDs únicos)
 
