@@ -49,7 +49,7 @@ INSERT INTO tb_assinatura (id_cliente, id_plano, data_inicio, data_fim, ativa) V
 
 -- Avaliação
 
-INSERT INTO tb_avaliacao (id, comentario, nota, id_cliente, id_filme) VALUES (1, 'Excelente!', 5.0, 1, 1);
+INSERT INTO tb_avaliacao (id, comentario, nota, id_cliente, id_filme, data) VALUES (1, 'Excelente!', 5.0, 1, 1, CURRENT_DATE);
 
 -- Histórico
 
