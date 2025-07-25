@@ -25,7 +25,7 @@ INSERT INTO tb_filme (id,nome, url_imagem, url_video) VALUES (5, 'Ju on', 'https
 INSERT INTO tb_filme (id,nome, url_imagem, url_video) VALUES (6, 'The Thing', 'https://uauposters.com.br/media/catalog/product/cache/1/thumbnail/800x930/9df78eab33525d08d6e5fb8d27136e95/4/7/476920230615-uau-posters-the-thing-a-coisa-horror-filmes-4.jpg', 'https://www.youtube.com/watch?v=5ftmr17M-a4');
 INSERT INTO tb_filme (id,nome, url_imagem, url_video) VALUES (7,'Nausicaä', 'https://upload.wikimedia.org/wikipedia/pt/1/19/Kaze_no_Tani_no_Naushika_p%C3%B4ster.png', 'https://www.youtube.com/watch?v=6zhLBe319KE');
 INSERT INTO tb_filme (id, nome, url_imagem, url_video) VALUES (8, 'Princesa Mononoke', 'https://m.media-amazon.com/images/I/81jSJRqb9IL._UF1000,1000_QL80_.jpg', 'https://www.youtube.com/watch?v=opCxPAwdB6U');
-INSERT INTO tb_filme (id, nome, url_imagem, url_video) VALUES (9, 'A Viagem de Chihiro', 'https://www.imdb.com/pt/title/tt0245429/mediaviewer/rm1004621313/?ref_=tt_ov_i','https://www.youtube.com/watch?v=GAp2_0JJskk');
+INSERT INTO tb_filme (id, nome, url_imagem, url_video) VALUES (9, 'A Viagem de Chihiro', 'https://lojasebocultural.com.br/wp-content/uploads/2024/06/d0dbe14058effec9ae3b5f2c7ec0bdbb.jpg','https://www.youtube.com/watch?v=GAp2_0JJskk');
 
 -- Associação filme-genero
 
