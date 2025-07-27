@@ -84,6 +84,12 @@ public class AssinaturaService {
 
     Assinatura atualizada = assinaturaRepo.save(assinatura);
     return new AssinaturaDTO(atualizada);
+    
 }
+public boolean clienteTemAssinaturaAtiva(Long idCliente) {
+    List<Assinatura> assinaturas = assinaturaRepo.findByClienteId(idCliente);
+    return assinaturas.stream().anyMatch(Assinatura::isAtiva);
+}
+
 
 }
