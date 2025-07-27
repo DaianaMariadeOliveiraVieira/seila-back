@@ -70,4 +70,8 @@ public class PerfilService {
         Perfil atualizado = perfilRepo.save(perfil);
         return new PerfilDTO(atualizado);
     }
+        public List<PerfilDTO> findByClienteId(Long idCliente) {
+        List<Perfil> perfis = perfilRepo.findAllByClienteId(idCliente);
+        return perfis.stream().map(PerfilDTO::new).toList();
+    }
 }

@@ -64,4 +64,12 @@ public class GeneroService {
         }
         generoRepo.deleteById(id);
     }
+    public List<GeneroDTO> findGenerosByFilmeId(Long idFilme) {
+    List<FilmeGenero> filmeGeneros = filmeGeneroRepo.findAllByFilmeId(idFilme);
+    return filmeGeneros.stream()
+            .map(FilmeGenero::getGenero)
+            .map(GeneroDTO::new)
+            .toList();
+}
+
 }

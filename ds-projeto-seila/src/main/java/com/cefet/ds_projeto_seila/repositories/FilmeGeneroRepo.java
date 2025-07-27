@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface FilmeGeneroRepo extends JpaRepository<FilmeGenero, Long> {
     List<FilmeGenero> findAllByGeneroId(Long generoId);
+    List<FilmeGenero> findAllByFilmeId(Long filmeId);
 }

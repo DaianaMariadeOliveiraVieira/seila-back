@@ -54,4 +54,9 @@ public class PerfilController {
         perfilService.delete(id);
         return ResponseEntity.noContent().build();
     }
+      @GetMapping("/cliente/{idCliente}")
+    public ResponseEntity<List<PerfilDTO>> findByClienteId(@PathVariable Long idCliente) {
+        List<PerfilDTO> perfis = perfilService.findByClienteId(idCliente);
+        return ResponseEntity.ok(perfis);
+    }
 }

@@ -63,4 +63,11 @@ public class GeneroController {
         generoService.delete(id);
         return ResponseEntity.noContent().build();
     }
+    // Listar todos os gêneros de um filme
+@GetMapping("/filmes/{idFilme}/generos")
+public ResponseEntity<List<GeneroDTO>> findGenerosByFilmeId(@PathVariable Long idFilme) {
+    List<GeneroDTO> generos = generoService.findGenerosByFilmeId(idFilme);
+    return ResponseEntity.ok(generos);
+}
+
 }
