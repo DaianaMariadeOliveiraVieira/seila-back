@@ -33,7 +33,7 @@ INSERT INTO tb_filme (id, nome,sinopse, url_imagem, url_video) VALUES (13, 'O Ca
 INSERT INTO tb_filme (id, nome, sinopse, url_imagem, url_video) VALUES (14, 'A Bússola de Ouro', 'Garota enfrenta um mundo com criaturas mágicas e ursos falantes', 'https://br.web.img2.acsta.net/c_310_420/medias/nmedia/18/86/98/25/19870779.jpg', 'https://www.youtube.com/watch?v=7RHScwM1ims');
 INSERT INTO tb_filme (id, nome, sinopse, url_imagem, url_video) VALUES (15, 'Hereditário', 'Família é atormentada por segredos macabros após a morte da avó', 'https://br.web.img2.acsta.net/c_310_420/pictures/18/06/14/13/11/1751062.jpg', 'https://www.youtube.com/watch?v=Ui13PlmyZhQ');
 
-INSERT INTO tb_filme (id, nome, sinopse, url_imagem, url_video) VALUES (16, 'Corra!', 'Homem negro descobre segredos assustadores da família da namorada', 'https://br.web.img2.acsta.net/c_310_420/pictures/17/04/19/17/28/004284.jpg', 'https://www.youtube.com/watch?v=mDGV5UucTu8');
+INSERT INTO tb_filme (id, nome, sinopse, url_imagem, url_video) VALUES (16, 'Ju On 2', 'É ESTUPIDAMENTE MELHOR QUE O 1', 'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/87/07/47/19871755.jpg', 'https://www.youtube.com/watch?v=G-obcMiJ5ZI');
 INSERT INTO tb_filme (id, nome, sinopse, url_imagem, url_video) VALUES (17, 'O Conto da Princesa Kaguya', 'Garota da lua vive na Terra entre humanos', 'https://br.web.img3.acsta.net/c_310_420/pictures/15/07/02/20/53/577027.jpg', 'https://www.youtube.com/watch?v=3u8bn1lUG_M');
 
 INSERT INTO tb_filme (id, nome, sinopse, url_imagem, url_video) VALUES (18, 'Meu Amigo Totoro', 'Duas irmãs encontram criaturas mágicas na floresta', 'https://br.web.img3.acsta.net/c_310_420/pictures/15/03/25/19/44/392518.jpg', 'https://www.youtube.com/watch?v=92a7Hj0ijLs');
@@ -56,7 +56,7 @@ INSERT INTO tb_filme_genero (id_filme, id_genero) VALUES (13, 3); -- Castelo Ani
 -- Associação filme-genero (continuação)
 INSERT INTO tb_filme_genero (id_filme, id_genero) VALUES (14, 1); -- A Bússola de Ouro → Fantasia
 INSERT INTO tb_filme_genero (id_filme, id_genero) VALUES (15, 2); -- Hereditário → Terror
-INSERT INTO tb_filme_genero (id_filme, id_genero) VALUES (16, 2); -- Corra! → Terror
+INSERT INTO tb_filme_genero (id_filme, id_genero) VALUES (16, 2); -- Ju On 2 → Terror
 INSERT INTO tb_filme_genero (id_filme, id_genero) VALUES (17, 3); -- Princesa Kaguya → Animação
 INSERT INTO tb_filme_genero (id_filme, id_genero) VALUES (18, 3); -- Totoro → Animação
 
