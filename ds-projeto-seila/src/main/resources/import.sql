@@ -73,7 +73,10 @@ INSERT INTO tb_assinatura (id_cliente, id_plano, data_inicio, data_fim, ativa) V
 -- Avaliação
 
 INSERT INTO tb_avaliacao (id, comentario, nota, id_cliente, id_filme, data) VALUES (1, 'Excelente!', 5.0, 1, 1, CURRENT_DATE);
+INSERT INTO tb_avaliacao (id, comentario, nota, id_cliente, id_filme, data) VALUES (2, 'Poderia ser melhor', 3.5, 2, 7, CURRENT_DATE);
 
 -- Histórico
 
 INSERT INTO tb_historico (id, id_cliente, id_filme, data)VALUES (1, 1, 1, CURRENT_DATE);
+INSERT INTO tb_historico (id, id_cliente, id_filme, data) VALUES (2, 1, 2, CURRENT_DATE);
+INSERT INTO tb_historico (id, id_cliente, id_filme, data) VALUES (3, 1, 3, CURRENT_DATE);
