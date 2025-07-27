@@ -70,7 +70,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/avaliacoes/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/avaliacoes/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.PUT, "/avaliacoes/**").hasRole("CLIENTE")
-                .requestMatchers(HttpMethod.DELETE, "/avaliacoes/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/avaliacoes/**").hasRole("CLIENTE")
                 //Genero
                 .requestMatchers(HttpMethod.GET, "/generos/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/generos").hasRole("ADMIN")
