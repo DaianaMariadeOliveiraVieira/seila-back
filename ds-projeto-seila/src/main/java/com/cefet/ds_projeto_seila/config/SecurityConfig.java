@@ -59,7 +59,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/historico/**").hasAnyRole("ADMIN", "CLIENTE") // Permite que clientes vejam seu histórico e admin veja todos tbm
                 .requestMatchers(HttpMethod.POST, "/historico/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.PUT, "/historico/**").hasRole("CLIENTE")
-                .requestMatchers(HttpMethod.DELETE, "/historico/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/historico/**").hasRole("CLIENTE")
                 //Perfil
                 .requestMatchers(HttpMethod.GET, "/perfil/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/perfil/**").hasRole("CLIENTE")
