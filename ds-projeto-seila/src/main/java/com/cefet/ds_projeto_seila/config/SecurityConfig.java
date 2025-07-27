@@ -42,7 +42,7 @@ public class SecurityConfig {
 
                 // Clientes
                 .requestMatchers(HttpMethod.GET, "/clientes/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/clientes").permitAll()
+                .requestMatchers(HttpMethod.POST, "/clientes/**").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/clientes/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/clientes/**").hasRole("ADMIN")
                 // Filmes
@@ -57,18 +57,18 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE, "/filmes/genero/**").hasRole("ADMIN")
                 //Historico
                 .requestMatchers(HttpMethod.GET, "/historico/**").hasAnyRole("ADMIN", "CLIENTE") // Permite que clientes vejam seu histórico e admin veja todos tbm
-                .requestMatchers(HttpMethod.POST, "/historico").hasRole("CLIENTE")
+                .requestMatchers(HttpMethod.POST, "/historico/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.PUT, "/historico/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/historico/**").hasRole("ADMIN")
                 //Perfil
                 .requestMatchers(HttpMethod.GET, "/perfil/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/perfil").hasRole("CLIENTE")
+                .requestMatchers(HttpMethod.POST, "/perfil/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.PUT, "/perfil/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/perfil/**").hasRole("ADMIN")
                 
                 // Avaliações
                 .requestMatchers(HttpMethod.GET, "/avaliacoes/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/avaliacoes").hasRole("CLIENTE")
+                .requestMatchers(HttpMethod.POST, "/avaliacoes/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.PUT, "/avaliacoes/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/avaliacoes/**").hasRole("ADMIN")
                 //Genero
