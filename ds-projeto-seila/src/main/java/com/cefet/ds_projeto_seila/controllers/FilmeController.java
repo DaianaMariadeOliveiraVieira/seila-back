@@ -2,6 +2,8 @@ package com.cefet.ds_projeto_seila.controllers;
 
 import java.util.List;
 
+import com.cefet.ds_projeto_seila.dto.GeneroDTO;
+import com.cefet.ds_projeto_seila.services.GeneroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +28,9 @@ public class FilmeController {
     @Autowired
     private FilmeService filmeService;
 
+    @Autowired
+    private GeneroService generoService;
+
     @GetMapping("/{id}")
     public ResponseEntity<FilmeDTO> findById(@PathVariable Long id) {
         FilmeDTO filmeDTO = filmeService.findById(id);
@@ -36,6 +41,13 @@ public class FilmeController {
     public ResponseEntity<List<FilmeDTO>> findAll() {
         List<FilmeDTO> filmes = filmeService.findAll();
         return ResponseEntity.ok(filmes);
+    }
+
+    // Listar todos os gêneros de um filme
+    @GetMapping("/{idFilme}/generos")
+    public ResponseEntity<List<GeneroDTO>> findGenerosByFilmeId(@PathVariable Long idFilme) {
+        List<GeneroDTO> generos = generoService.findGenerosByFilmeId(idFilme);
+        return ResponseEntity.ok(generos);
     }
 
     @PostMapping
