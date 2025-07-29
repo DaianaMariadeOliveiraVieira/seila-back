@@ -69,27 +69,27 @@ public class AssinaturaService {
     }
 
     public AssinaturaDTO update(Long id, AssinaturaDTO dto) {
-    Assinatura assinatura = assinaturaRepo.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("Assinatura não encontrada com ID: " + id));
+        Assinatura assinatura = assinaturaRepo.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Assinatura não encontrada com ID: " + id));
 
-    assinatura.setDataInicio(dto.getDataInicio());
-    assinatura.setDataFim(dto.getDataFim());
-    assinatura.setAtiva(dto.isAtiva());
+        assinatura.setDataInicio(dto.getDataInicio());
+        assinatura.setDataFim(dto.getDataFim());
+        assinatura.setAtiva(dto.isAtiva());
 
-    // Buscar o novo plano pelo ID e setar na assinatura
-    Plano novoPlano = planoRepo.findById(dto.getIdPlano())
-        .orElseThrow(() -> new EntityNotFoundException("Plano não encontrado com ID: " + dto.getIdPlano()));
+        // Buscar o novo plano pelo ID e setar na assinatura
+        Plano novoPlano = planoRepo.findById(dto.getIdPlano())
+            .orElseThrow(() -> new EntityNotFoundException("Plano não encontrado com ID: " + dto.getIdPlano()));
 
-    assinatura.setPlano(novoPlano);
+        assinatura.setPlano(novoPlano);
 
-    Assinatura atualizada = assinaturaRepo.save(assinatura);
-    return new AssinaturaDTO(atualizada);
-    
-}
-public boolean clienteTemAssinaturaAtiva(Long idCliente) {
-    List<Assinatura> assinaturas = assinaturaRepo.findByClienteId(idCliente);
-    return assinaturas.stream().anyMatch(Assinatura::isAtiva);
-}
+        Assinatura atualizada = assinaturaRepo.save(assinatura);
+        return new AssinaturaDTO(atualizada);
+    }
+
+    public boolean clienteTemAssinaturaAtiva(Long idCliente) {
+        List<Assinatura> assinaturas = assinaturaRepo.findByClienteId(idCliente);
+        return assinaturas.stream().anyMatch(Assinatura::isAtiva);
+    }
 
 
 }
