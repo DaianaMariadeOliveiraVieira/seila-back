@@ -13,10 +13,10 @@
 
     <!-- Project Information -->
     <groupId>com.cefet</groupId>
-    <artifactId>projeto-academia</artifactId>
+    <artifactId>ds-projeto-seila</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>projeto-academia</name>
-    <description>Projeto-Pratico-Academia</description>
+    <name>ds-projeto-seila</name>
+    <description>Serviço de Streaming</description>
 
     <properties>
         <java.version>21</java.version>
