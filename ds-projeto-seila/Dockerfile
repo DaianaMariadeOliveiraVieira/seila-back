@@ -15,7 +15,7 @@ RUN wget -O- https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg 
 WORKDIR /app
 
 # Copia o resto do código do projeto
-COPY src ./src
+COPY . .
 
 RUN mvn clean install -DskipTests
 
