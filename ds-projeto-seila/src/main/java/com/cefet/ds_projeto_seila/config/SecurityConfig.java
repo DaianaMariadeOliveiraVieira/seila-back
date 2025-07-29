@@ -78,7 +78,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE, "/generos/**").hasRole("ADMIN")
                 // Assinaturas
                 .requestMatchers(HttpMethod.GET, "/assinaturas/**").hasAnyRole("ADMIN", "CLIENTE")
-                .requestMatchers(HttpMethod.POST, "/assinaturas").hasRole("CLIENTE")
+                .requestMatchers(HttpMethod.POST, "/assinaturas/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.PUT, "/assinaturas/**").hasRole("CLIENTE")
                 .requestMatchers(HttpMethod.DELETE, "/assinaturas/**").hasRole("ADMIN")
                 // Planos (geralmente só ADMIN mexe)
