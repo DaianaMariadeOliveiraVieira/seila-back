@@ -14,7 +14,8 @@ RUN wget -O- https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg 
 
 WORKDIR /app
 
-COPY ./ds-projeto-seila/ .
+# Copia o resto do código do projeto
+COPY src ./src
 
 RUN mvn clean install -DskipTests
 
@@ -25,6 +26,8 @@ WORKDIR /app
 
 EXPOSE 8080
 
+# Copia o arquivo .jar gerado na etapa de build para a imagem final
 COPY --from=build /app/target/ds-projeto-seila-0.0.1-SNAPSHOT.jar app.jar
+
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
