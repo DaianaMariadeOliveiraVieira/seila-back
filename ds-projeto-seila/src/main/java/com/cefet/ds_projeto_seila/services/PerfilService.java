@@ -8,9 +8,11 @@ import com.cefet.ds_projeto_seila.repositories.ClienteRepo;
 import com.cefet.ds_projeto_seila.repositories.GeneroRepo;
 import com.cefet.ds_projeto_seila.repositories.PerfilRepo;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -70,8 +72,18 @@ public class PerfilService {
         Perfil atualizado = perfilRepo.save(perfil);
         return new PerfilDTO(atualizado);
     }
-        public List<PerfilDTO> findByClienteId(Long idCliente) {
+
+    public List<PerfilDTO> findByClienteId(Long idCliente) {
         List<Perfil> perfis = perfilRepo.findAllByClienteId(idCliente);
         return perfis.stream().map(PerfilDTO::new).toList();
+    }
+
+    @Transactional
+    public List<PerfilDTO> updatePerfis(Long idCliente, List<PerfilDTO> dtos) {
+        Cliente cliente = clienteRepo.findById(idCliente)
+                .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado com ID: " + idCliente));
+
+        perfilRepo.deleteByClienteId(idCliente); // apaga todos os perfis antigos
+        return dtos.stream().map(this::insert).toList();
     }
 }

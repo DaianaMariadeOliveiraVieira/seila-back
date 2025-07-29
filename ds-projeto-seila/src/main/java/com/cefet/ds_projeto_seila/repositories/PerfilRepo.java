@@ -6,4 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PerfilRepo extends JpaRepository<Perfil, Long> {
     List<Perfil> findAllByClienteId(Long clienteId);
+    void deleteByClienteId(Long clienteId);
+
+    Long id(Long id);
 }

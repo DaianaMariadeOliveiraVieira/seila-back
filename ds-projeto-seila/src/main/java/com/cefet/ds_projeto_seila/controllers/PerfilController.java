@@ -42,6 +42,7 @@ public class PerfilController {
         List<PerfilDTO> perfis = perfilService.findByClienteId(idCliente);
         return ResponseEntity.ok(perfis);
     }
+
     @PostMapping
     public ResponseEntity<PerfilDTO> create(@RequestBody PerfilDTO perfilDTO) {
         PerfilDTO novoPerfil = perfilService.insert(perfilDTO);
@@ -52,6 +53,12 @@ public class PerfilController {
     public ResponseEntity<PerfilDTO> update(@PathVariable Long id, @RequestBody PerfilDTO perfilDTO) {
         PerfilDTO perfilAtualizado = perfilService.update(id, perfilDTO);
         return ResponseEntity.ok(perfilAtualizado);
+    }
+
+    @PutMapping("/cliente/{idCliente}")
+    public ResponseEntity<List<PerfilDTO>> atualizarPerfisDoCliente(@PathVariable Long idCliente, @RequestBody List<PerfilDTO> novosPerfis) {
+        List<PerfilDTO> perfisAtualizados = perfilService.updatePerfis(idCliente, novosPerfis);
+        return ResponseEntity.ok(perfisAtualizados);
     }
 
     @DeleteMapping("/{id}")
