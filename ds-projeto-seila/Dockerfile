@@ -14,7 +14,7 @@ RUN wget -O- https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg 
 
 WORKDIR /app
 
-COPY . .
+COPY ./ds-projeto-seila/ .
 
 RUN mvn clean install -DskipTests
 
@@ -25,6 +25,6 @@ WORKDIR /app
 
 EXPOSE 8080
 
-COPY --from=build /app/target/ds-guia12-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/ds-projeto-seila-0.0.1-SNAPSHOT.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
